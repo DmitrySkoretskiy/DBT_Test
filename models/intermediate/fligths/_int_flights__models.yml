@@ -1,0 +1,66 @@
+models:
+  - name: fct_bookings
+    description: Факты бронирований
+    docs:
+      show: true
+      node_color: red
+    latest_version: 1
+    versions:
+      - v: 1
+    config:
+      contract: {enforced: true}
+      meta: {owner: "Dima@gmail.com", contact_tg: Dima, status: in_dev, my_meta: new}
+    columns:
+      - name: booking_hk
+        data_type: varchar(32)
+      - name: book_ref
+        description: Идентификатор бронирования
+        data_type: bpchar(8)
+        constraints:
+          - type: not_null
+        tests: [not_null, unique]
+      - name: book_date
+        data_type: timestamptz
+      - name: total_amount
+        data_type: numeric(10, 2)
+        constraints:
+          - type: check
+            expression: "total_amount > 0"
+        tests:
+          - not_null
+        meta:
+          owner: finance_team
+        quote: false
+  - name: fct_flights
+    description: Факты перелетов
+    docs:
+      show: true
+      node_color: green
+    config:
+      contract: {enforced: true}
+      meta: {owner: "Dima@gmail.com", contact_tg: Dima, status: in_dev, my_meta: new}
+    columns:
+      - name: flight_id
+        data_type: int4
+        constraints:
+          - type: not_null
+          - type: check
+            expression: "value > 0"
+      - name: flight_no
+        data_type: varchar(10)
+      - name: scheduled_departure
+        data_type: timestamptz
+      - name: scheduled_arrival
+        data_type: timestamptz
+      - name: departure_airport_id
+        data_type: bpchar(3)
+      - name: arrival_airport_id
+        data_type: bpchar(3)
+      - name: status
+        data_type: varchar(20)
+      - name: aircraft_id
+        data_type: bpchar(3)
+      - name: actual_departure
+        data_type: timestamptz
+      - name: actual_arrival
+        data_type: timestamptz

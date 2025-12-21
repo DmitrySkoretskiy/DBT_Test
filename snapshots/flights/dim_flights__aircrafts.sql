@@ -18,5 +18,5 @@ SELECT
     model, 
     "range"
 FROM
-        {{ ref('stg_flights__aircrafts') }}
+        {{ ref('stg_fligths__aircrafts') }}
 {% endsnapshot %}

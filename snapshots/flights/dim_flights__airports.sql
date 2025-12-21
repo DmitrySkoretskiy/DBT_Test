@@ -20,5 +20,5 @@ SELECT
     coordinates,
     timezone
 FROM
-        {{ ref('stg_flights__airports') }}
+        {{ ref('stg_fligths__airports') }}
 {% endsnapshot %}

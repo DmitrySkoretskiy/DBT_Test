@@ -18,5 +18,5 @@ SELECT
     seat_no, 
     fare_conditions
 FROM
-        {{ ref('stg_flights__seats') }}
+        {{ ref('stg_fligths__seats') }}
 {% endsnapshot %}

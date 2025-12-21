@@ -1,7 +1,7 @@
-city,region
-London,Greater London
-Manchester,Greater Manchester
-Birmingham,West Midlands
-Liverpool,Merseyside
-Leeds,West Yorkshire
-Bristol,Bristol
+city,region,updated_at
+London,Greater London,2025-12-21 12:00:00
+Manchester,Greater Manchester,2025-12-21 12:00:00
+Birmingham,West Midlands,2025-12-21 12:00:00
+Liverpool,Merseyside,2025-12-21 12:00:00
+Leeds,West Yorkshire,2025-12-21 12:00:00
+Bristol,Bristol,2025-12-21 12:00:00

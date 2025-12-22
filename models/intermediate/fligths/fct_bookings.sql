@@ -1,6 +1,9 @@
 {{
   config(
-    materialized = 'table'
+    materialized = 'table',
+    meta = {
+      'owner': 'dima_file_owner@gmail.com'
+    }
     )
 }}
 select

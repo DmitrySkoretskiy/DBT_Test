@@ -7,8 +7,6 @@
     )
 }}
 select
-    book_ref,
-    book_date,
-    total_amount
+  {{- show_columns_relation('stg_fligths__bookings') -}}
 from
     {{ ref('stg_fligths__bookings') }}

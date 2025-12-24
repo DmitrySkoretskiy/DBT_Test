@@ -8,7 +8,7 @@
 SELECT
     book_ref,
     book_date,
-    total_amount
+    {{ kopeck_to_ruble(column_name='total_amount') }} as total_amount
 FROM
     {{ source('demo_src', 'bookings') }}
 {% if is_incremental() %}

@@ -1,9 +1,6 @@
 {{
-  config(
-    materialized = 'table',
-    meta = {
-      'owner': 'sql_file_owner@Dima_gmail.com'
-    }
+    config(
+        materialized = 'table'
     )
 }}
 select
@@ -16,6 +13,7 @@ select
     status, 
     aircraft_code, 
     actual_departure, 
-    actual_arrival
+    actual_arrival,
+    {{ concat_columns([ 'flight_id', 'flight_no' ]) }} as fligth_info
 from
     {{ ref('stg_fligths__flights') }}

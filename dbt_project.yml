@@ -1,7 +1,8 @@
+
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'dbt_course'
+name: 'dbt_course_practice'
 version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project.
@@ -20,8 +21,6 @@ snapshot-paths: ["snapshots"]
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
-
-
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
@@ -35,3 +34,4 @@ models:
       +materialized: view
   staging:
     +schema: staging
+on-run-end: "{{ dbt_project_evaluator.print_dbt_project_evaluator_issues() }}"

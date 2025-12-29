@@ -1,0 +1,62 @@
+sources:
+  - name: flights
+    tables:
+      - name: stg_flights__flights
+        columns:
+          - name: status
+
+      - name: stg_flights__seats
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - aircraft_code
+                - seat_no
+        columns:
+          - name: aircraft_code
+            tests:
+              - not_null
+              - relationships:
+                  to: source('flights', 'stg_flights__aircrafts')
+                  field: aircraft_code
+
+          - name: seat_no
+            tests:
+              - not_null
+              - seat_no_pattern:
+                  config:
+                    severity: warn
+
+          - name: fare_conditions
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['Business', 'Comfort', 'Economy']
+
+          - name: PP
+
+      - name: stg_flights__airports
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - airport_name
+                - city
+        columns:
+          - name: airport_code
+            tests:
+              - not_null
+              - unique
+              - airport_code_pattern:
+                  config:
+                    severity: warn
+
+          - name: airport_name
+            tests:
+              - not_null
+
+          - name: city
+            tests:
+              - not_null
+
+          - name: coordinates
+            tests:
+              - not_null
